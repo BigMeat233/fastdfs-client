@@ -1,17 +1,21 @@
 # Nodejs Client for FastDFS
 
-[FastDFS](https://github.com/happyfish100/fastdfs) 是分布式文件存储系统。这个项目是FastDFS的NodeJS客户端，用来与FastDFS Server进行交互，进行文件的相关操作。我测试过的server版本是4.0.6。
+[FastDFS](https://github.com/happyfish100/fastdfs) 是分布式文件存储系统。此项目是FastDFS在NodeJS平台下的客户端，可以用于生产环境与FastDFS进行交互，包含文件增删改查、服务信息获取等功能。
 
 # 说明
-本项目fork自git@github.com:ymyang/fdfs.git  
+本项目git:[https://github.com/BigMeat233/fastdfs-client](https://github.com/BigMeat233/fastdfs-client)(fork自git@github.com:ymyang/fdfs.git)
+
 fixed:  
 1. FastDFS 5.11执行listStorages失败的BUG  
+
+attention:  
+1. 多tracker配置时,将会按配置顺序进行连接,不会进行负载均衡
 
 # 安装
 
 ```shell
 
-npm install fdfs
+npm install fastdfs-client
 
 ```
 
@@ -19,7 +23,7 @@ npm install fdfs
 
 ```javascript
 
-var FdfsClient = require('fdfs');
+var FdfsClient = require('fastdfs-client');
 
 var fdfs = new FdfsClient({
     // tracker servers
@@ -45,7 +49,7 @@ var fdfs = new FdfsClient({
 
 ```javascript
 
-var debug = require('debug')('fdfs');
+var debug = require('debug')('fastdfs-client');
 var fdfs = new FdfsClient({
     // tracker servers
     trackers: [
